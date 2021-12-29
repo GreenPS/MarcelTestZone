@@ -3,7 +3,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/primary2</item>
         <item name="colorPrimaryDark">@color/primary2</item>
-        <item name="colorSecondary">@color/design_default_color_secondary</item>
+        <item name="colorSecondary">@color/primary2</item>
     </style>
 
     <style name="SplashTheme" parent="AppTheme">

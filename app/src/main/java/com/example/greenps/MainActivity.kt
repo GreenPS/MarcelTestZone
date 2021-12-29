@@ -1,9 +1,11 @@
 package com.example.greenps
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -29,6 +31,19 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         createFragment()
+
+        val botonPerfil = findViewById<ImageButton>(R.id.profileButton)
+        val botonComent = findViewById<ImageButton>(R.id.comentbutton)
+
+        botonComent.setOnClickListener(){
+            val intent = Intent(this, Comentarios::class.java)
+            startActivity(intent)
+        }
+
+        botonPerfil.setOnClickListener(){
+            val intent = Intent(this, Perfil::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun createFragment() {

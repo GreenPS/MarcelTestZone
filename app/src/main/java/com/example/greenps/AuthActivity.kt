@@ -49,7 +49,8 @@ class AuthActivity : AppCompatActivity() {
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
                         //string vacio, no deberia pasar
-                        showTest(it.result?.user?.email ?: "", ProviderType.BASIC)
+                        // showTest(it.result?.user?.email ?: "", ProviderType.BASIC)
+                        showMain()
                     } else {
                         showAlert()
                     }
@@ -74,6 +75,12 @@ class AuthActivity : AppCompatActivity() {
             putExtra("email", email)
             putExtra("provider", provider.name)
         }
+        startActivity(testIntent)
+    }
+
+    private fun showMain(){
+
+        val testIntent = Intent(this, MainActivity::class.java)
         startActivity(testIntent)
     }
 }
