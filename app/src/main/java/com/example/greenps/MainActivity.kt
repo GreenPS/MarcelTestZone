@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -17,6 +18,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import java.util.jar.Manifest
 import java.util.jar.Pack200
+import kotlin.math.log10
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener {
 
@@ -32,6 +34,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         setContentView(R.layout.activity_main)
         createFragment()
 
+        val bundle = intent.extras
+        val email = bundle?.getString("email")
+        println(email)
+
         val botonPerfil = findViewById<ImageButton>(R.id.profileButton)
         val botonComent = findViewById<ImageButton>(R.id.comentbutton)
 
@@ -41,7 +47,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMyLoca
         }
 
         botonPerfil.setOnClickListener(){
-            val intent = Intent(this, Perfil::class.java)
+            val intent = Intent(this, Perfil::class.java).apply {
+                putExtra("email",email)
+            }
             startActivity(intent)
         }
     }
